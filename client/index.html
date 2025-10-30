@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meet Clone (Cookie Auth + Redis)</title>
+<link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+<header class="topbar">
+<div class="brand">Meet<span>Lite</span></div>
+<div class="room">
+<input id="room-input" placeholder="Room ID" />
+<input id="name-input" placeholder="Your name (dev login)" />
+<button id="btn-login">Dev Login</button>
+<button id="btn-join">Join</button>
+<button id="btn-create">Create</button>
+</div>
+</header>
+
+
+<main class="container">
+<aside class="sidebar">
+<h3>Me</h3>
+<div id="me" class="me"></div>
+<h3>Participants</h3>
+<ul id="participants"></ul>
+<h3>Chat</h3>
+<div id="chat-log" class="chat-log"></div>
+<div class="chat-input">
+<input id="chat-text" placeholder="Message..." />
+<button id="chat-send">Send</button>
+</div>
+</aside>
+
+
+<section class="stage">
+<div class="video-grid" id="video-grid"></div>
+<div class="controls">
+<button id="toggle-audio">Mute</button>
+<button id="toggle-video">Video Off</button>
+<button id="share-screen">Share Screen</button>
+<button id="leave">Leave</button>
+</div>
+</section>
+</main>
+
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

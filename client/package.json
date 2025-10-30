@@ -1,0 +1,1 @@
+{"name":"webrtc-meet-client","version":"2.0.0","private":true,"type":"module","scripts":{"dev":"vite","build":"tsc && vite build","preview":"vite preview --port 5174"},"dependencies":{"connect-redis":"^7.1.1","socket.io-client":"^4.7.5"},"devDependencies":{"typescript":"^5.6.3","vite":"^5.4.8"}}
