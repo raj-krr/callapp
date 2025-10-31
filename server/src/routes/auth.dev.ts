@@ -24,8 +24,8 @@ authDevRouter.post('/auth/login', (req, res) => {
 
 authDevRouter.post('/auth/logout', (req, res) => {
   req.session.destroy(() => {
-	res.clearCookie(req.session.cookie?.name ?? 'sid');
-	res.json({ ok: true });
+  res.clearCookie('sid');
+  res.json({ ok: true });
   });
 });
 

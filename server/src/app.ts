@@ -53,8 +53,12 @@ io.adapter(await buildRedisAdapter());
 io.on('connection', (socket) => {
 registerSocketHandlers(io, socket);
 registerWebRTCHandlers(io, socket);
-});
+console.log('New client connected:', socket.id);
 
+// socket.on('disconnect', () => {
+// logger.info('Client disconnected:', socket.id);
+// });
+});
 
 return { app, httpServer };
 }
