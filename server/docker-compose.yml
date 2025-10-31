@@ -1,0 +1,43 @@
+
+services:
+  backend:
+    build: .
+    container_name: chrona-backend
+    ports:
+      - "5173:5173"
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - chrona-network   
+  mongodb:
+    image: mongo:6.0
+    container_name: chrona-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - chrona-network
+
+  redis:
+    image: redis:7.0
+    container_name: chrona-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - chrona-network
+
+
+volumes:
+  mongo_data:
+
+networks:
+  chrona-network:

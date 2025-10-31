@@ -1,0 +1,25 @@
+# Stage 1: Build
+FROM node:18-slim AS builder
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build
+
+# Stage 2: Runtime
+FROM node:18-slim AS runner
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install --omit=dev
+
+# Copy compiled JS files only
+COPY --from=builder /app/dist ./dist
+
+ENV NODE_ENV=production
+EXPOSE 8000
+
+# ✅ Run compiled output, not TypeScript source
+CMD ["node", "dist/index.js"]
